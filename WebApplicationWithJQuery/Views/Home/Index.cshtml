@@ -16,10 +16,11 @@
         <h1>Hello from index</h1>
         
         
-        <input type="text" id="txtBox" />
-        
-        <label id="lbl"></label>
-        
+        <div>
+            <h2>Id</h2> - <h2 id="stdId"></h2>
+            <h2>Name</h2> - <h2 id="stdName"></h2>
+            <h2>Email</h2> - <h2 id="stdEmail"></h2>
+        </div>
         
         
         <input type="button" onclick="BtnClick()" name="btn" value="submit" id="btn" />
@@ -32,7 +33,15 @@
 <script>
     
     function BtnClick() {
-        var value = $("#txtBox").val();
-        $("#lbl").text(value);  
+        $.ajax({
+            url: "/Home/GetStudent",
+            method: "GET",
+            success: function (data) {
+                console.log(data);
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        })
     }
 </script>

@@ -26,5 +26,6 @@ namespace WebApplicationWithJQuery.Controllers
             var json = JsonConvert.SerializeObject(std);
             return Json(json,JsonRequestBehavior.AllowGet);
         }
+
     }
 }
