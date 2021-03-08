@@ -37,7 +37,11 @@
             url: "/Home/GetStudent",
             method: "GET",
             success: function (data) {
-                console.log(data);
+                data = JSON.parse(data);
+                $("#stdId").text(data.Id);
+                $("#stdName").text(data.Name);
+                $("#stdEmail").text(data.Emial);
+
             },
             error: function (error) {
                 console.log(error);
