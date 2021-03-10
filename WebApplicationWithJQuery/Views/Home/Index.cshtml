@@ -13,18 +13,27 @@
 </head>
 <body>
     <div> 
-        <h1>Hello from index</h1>
         
         
-        <div>
+        
+        @*<div>
             <h2>Id</h2> - <h2 id="stdId"></h2>
             <h2>Name</h2> - <h2 id="stdName"></h2>
             <h2>Email</h2> - <h2 id="stdEmail"></h2>
-        </div>
+        </div>*@
         
         
-        <input type="button" onclick="BtnClick()" name="btn" value="submit" id="btn" />
+        @*<input type="button" onclick="BtnClick()" name="btn" value="submit" id="btn" />*@
 
+        <form>
+            <input type="text" id="stdId" placeholder="id" />
+            <br /><br />
+            <input type="text" id="stdName" placeholder="Name" />
+            <br /><br />
+            <input type="text" id="stdEmail" placeholder="Email" />
+            <br /><br />
+            <input type="button" value="Send Data" onclick="BtnClick()"/>
+        </form>
 
     </div>
 </body>
@@ -32,10 +41,43 @@
 
 <script>
     
+    //function BtnClick() {
+    //    $.ajax({
+    //        url: "/Home/GetStudent",
+    //        method: "GET",
+    //        success: function (data) {
+    //            data = JSON.parse(data);
+    //            $("#stdId").text(data.Id);
+    //            $("#stdName").text(data.Name);
+    //            $("#stdEmail").text(data.Emial);
+
+    //        },
+    //        error: function (error) {
+    //            console.log(error);
+    //        }
+    //    })
+    //}
+
     function BtnClick() {
+        var id = $("#stdId").val();
+        var name = $("#stdName").val();
+        var email = $("#stdEmail").val();
+
+        var obj = {
+            Id: id,
+            Name: name,
+            Email: email
+        }
+
+        SubmitForm();
+    }
+
+    function SubmitForm(obj) {
+
         $.ajax({
-            url: "/Home/GetStudent",
-            method: "GET",
+            url: "/Home/AddStudent",
+            method: "POST",
+            data:obj,
             success: function (data) {
                 data = JSON.parse(data);
                 $("#stdId").text(data.Id);
@@ -45,7 +87,7 @@
             },
             error: function (error) {
                 console.log(error);
-            }
+            }   
         })
     }
 </script>

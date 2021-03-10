@@ -27,5 +27,11 @@ namespace WebApplicationWithJQuery.Controllers
             return Json(json,JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult AddStudent(Student student)
+         {
+
+            return Json("true",JsonRequestBehavior.AllowGet);
+        }
+
     }
 }
